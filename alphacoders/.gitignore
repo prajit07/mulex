@@ -1,0 +1,20 @@
+# Local environments, analysis outputs and private working data
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+/data/
+*.db
+*.db-*
+.env
+.env.*
+*.log
+
+# Local editors and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+context.md

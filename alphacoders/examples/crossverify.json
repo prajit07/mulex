@@ -1,0 +1,17 @@
+{
+  "name": "CrossVerify · small synthetic ledger",
+  "accounts": [
+    { "id": "CV-A", "name": "Collector", "device": "DEV-CV-1" },
+    { "id": "CV-B", "name": "Layering intermediary" },
+    { "id": "CV-C", "name": "Cash-out endpoint" },
+    { "id": "CV-V1", "name": "Complaint source" }
+  ],
+  "transactions": [
+    { "id": "CV-T1", "sender": "CV-V1", "receiver": "CV-A", "amount_paise": 200000, "timestamp": "2026-11-01T09:00:00+05:30" },
+    { "id": "CV-T2", "sender": "CV-A", "receiver": "CV-B", "amount_paise": 190000, "timestamp": "2026-11-01T09:05:00+05:30" },
+    { "id": "CV-T3", "sender": "CV-B", "receiver": "CV-C", "amount_paise": 180000, "timestamp": "2026-11-01T09:20:00+05:30" }
+  ],
+  "complaints": [
+    { "id": "CV-CMP-1", "account": "CV-A", "transfer": "CV-T1", "category": "Reported online payment fraud", "timestamp": "2026-11-02T09:00:00+00:00" }
+  ]
+}

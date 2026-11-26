@@ -1,0 +1,744 @@
+{
+  "name": "ShadowFlow \u00b7 synthetic ledger",
+  "accounts": [
+    {
+      "id": "ACC-1029",
+      "name": "Consolidation account"
+    },
+    {
+      "id": "ACC-2847",
+      "name": "Receiving account",
+      "device": "DEVICE-X17"
+    },
+    {
+      "id": "ACC-7721",
+      "name": "First intermediary",
+      "device": "DEVICE-X17"
+    },
+    {
+      "id": "ACC-9904",
+      "name": "Merchant account"
+    },
+    {
+      "id": "ACC-VIC-1",
+      "name": "Complaint source -1"
+    },
+    {
+      "id": "ACC-VIC-2",
+      "name": "Complaint source -2"
+    },
+    {
+      "id": "ACC-VIC-3",
+      "name": "Complaint source -3"
+    },
+    {
+      "id": "ACC-VIC-4",
+      "name": "Complaint source -4"
+    },
+    {
+      "id": "ACC-VIC-5",
+      "name": "Complaint source -5"
+    },
+    {
+      "id": "ACC-VIC-6",
+      "name": "Complaint source -6"
+    },
+    {
+      "id": "RET-00",
+      "name": "Retail account 01"
+    },
+    {
+      "id": "RET-01",
+      "name": "Retail account 02"
+    },
+    {
+      "id": "RET-02",
+      "name": "Retail account 03"
+    },
+    {
+      "id": "RET-03",
+      "name": "Retail account 04"
+    },
+    {
+      "id": "RET-04",
+      "name": "Retail account 05"
+    },
+    {
+      "id": "RET-05",
+      "name": "Retail account 06"
+    },
+    {
+      "id": "RET-06",
+      "name": "Retail account 07"
+    },
+    {
+      "id": "RET-07",
+      "name": "Retail account 08"
+    },
+    {
+      "id": "RET-08",
+      "name": "Retail account 09"
+    },
+    {
+      "id": "RET-09",
+      "name": "Retail account 10"
+    },
+    {
+      "id": "RET-10",
+      "name": "Retail account 11"
+    },
+    {
+      "id": "RET-11",
+      "name": "Retail account 12"
+    },
+    {
+      "id": "RET-12",
+      "name": "Retail account 13"
+    },
+    {
+      "id": "RET-13",
+      "name": "Retail account 14"
+    },
+    {
+      "id": "RET-14",
+      "name": "Retail account 15"
+    },
+    {
+      "id": "RET-15",
+      "name": "Retail account 16"
+    },
+    {
+      "id": "RET-16",
+      "name": "Retail account 17"
+    },
+    {
+      "id": "RET-17",
+      "name": "Retail account 18"
+    },
+    {
+      "id": "RET-18",
+      "name": "Retail account 19"
+    },
+    {
+      "id": "RET-19",
+      "name": "Retail account 20"
+    },
+    {
+      "id": "ACC-4410",
+      "name": "Shell account",
+      "device": "DEVICE-K22"
+    },
+    {
+      "id": "ACC-5530",
+      "name": "Second receiving account",
+      "device": "DEVICE-K22"
+    },
+    {
+      "id": "ACC-VIC-7",
+      "name": "Complaint source -7"
+    },
+    {
+      "id": "ACC-VIC-8",
+      "name": "Complaint source -8"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "TXN-VIC-1-TO-2847",
+      "sender": "ACC-VIC-1",
+      "receiver": "ACC-2847",
+      "amount_paise": 8000000,
+      "timestamp": "2026-11-01T09:00:00+00:00"
+    },
+    {
+      "id": "TXN-2847-TO-7721-HOP1-1",
+      "sender": "ACC-2847",
+      "receiver": "ACC-7721",
+      "amount_paise": 7600000,
+      "timestamp": "2026-11-01T09:07:15+00:00"
+    },
+    {
+      "id": "TXN-7721-TO-1029-HOP2-1",
+      "sender": "ACC-7721",
+      "receiver": "ACC-1029",
+      "amount_paise": 7280000,
+      "timestamp": "2026-11-01T09:19:15+00:00"
+    },
+    {
+      "id": "TXN-VIC-2-TO-2847",
+      "sender": "ACC-VIC-2",
+      "receiver": "ACC-2847",
+      "amount_paise": 7500000,
+      "timestamp": "2026-11-01T09:25:00+00:00"
+    },
+    {
+      "id": "TXN-2847-TO-7721-HOP1-2",
+      "sender": "ACC-2847",
+      "receiver": "ACC-7721",
+      "amount_paise": 7125000,
+      "timestamp": "2026-11-01T09:31:35+00:00"
+    },
+    {
+      "id": "TXN-7721-TO-1029-HOP2-2",
+      "sender": "ACC-7721",
+      "receiver": "ACC-1029",
+      "amount_paise": 6825000,
+      "timestamp": "2026-11-01T09:41:35+00:00"
+    },
+    {
+      "id": "TXN-1029-TO-9904-HOP3-1",
+      "sender": "ACC-1029",
+      "receiver": "ACC-9904",
+      "amount_paise": 7040000,
+      "timestamp": "2026-11-01T09:42:15+00:00"
+    },
+    {
+      "id": "TXN-VIC-3-TO-2847",
+      "sender": "ACC-VIC-3",
+      "receiver": "ACC-2847",
+      "amount_paise": 6500000,
+      "timestamp": "2026-11-01T09:50:00+00:00"
+    },
+    {
+      "id": "TXN-1029-TO-9904-HOP3-2",
+      "sender": "ACC-1029",
+      "receiver": "ACC-9904",
+      "amount_paise": 6600000,
+      "timestamp": "2026-11-01T09:56:35+00:00"
+    },
+    {
+      "id": "TXN-2847-TO-7721-HOP1-3",
+      "sender": "ACC-2847",
+      "receiver": "ACC-7721",
+      "amount_paise": 6175000,
+      "timestamp": "2026-11-01T09:57:11+00:00"
+    },
+    {
+      "id": "TXN-7721-TO-1029-HOP2-3",
+      "sender": "ACC-7721",
+      "receiver": "ACC-1029",
+      "amount_paise": 5915000,
+      "timestamp": "2026-11-01T10:05:11+00:00"
+    },
+    {
+      "id": "TXN-VIC-4-TO-2847",
+      "sender": "ACC-VIC-4",
+      "receiver": "ACC-2847",
+      "amount_paise": 4200000,
+      "timestamp": "2026-11-01T10:15:00+00:00"
+    },
+    {
+      "id": "TXN-2847-TO-7721-HOP1-4",
+      "sender": "ACC-2847",
+      "receiver": "ACC-7721",
+      "amount_paise": 3990000,
+      "timestamp": "2026-11-01T10:20:36+00:00"
+    },
+    {
+      "id": "TXN-1029-TO-9904-HOP3-3",
+      "sender": "ACC-1029",
+      "receiver": "ACC-9904",
+      "amount_paise": 5720000,
+      "timestamp": "2026-11-01T10:26:11+00:00"
+    },
+    {
+      "id": "TXN-7721-TO-1029-HOP2-4",
+      "sender": "ACC-7721",
+      "receiver": "ACC-1029",
+      "amount_paise": 3822000,
+      "timestamp": "2026-11-01T10:26:36+00:00"
+    },
+    {
+      "id": "TXN-VIC-5-TO-2847",
+      "sender": "ACC-VIC-5",
+      "receiver": "ACC-2847",
+      "amount_paise": 3800000,
+      "timestamp": "2026-11-01T10:40:00+00:00"
+    },
+    {
+      "id": "TXN-2847-TO-7721-HOP1-5",
+      "sender": "ACC-2847",
+      "receiver": "ACC-7721",
+      "amount_paise": 3610000,
+      "timestamp": "2026-11-01T10:46:34+00:00"
+    },
+    {
+      "id": "TXN-1029-TO-9904-HOP3-4",
+      "sender": "ACC-1029",
+      "receiver": "ACC-9904",
+      "amount_paise": 3696000,
+      "timestamp": "2026-11-01T10:49:36+00:00"
+    },
+    {
+      "id": "TXN-7721-TO-1029-HOP2-5",
+      "sender": "ACC-7721",
+      "receiver": "ACC-1029",
+      "amount_paise": 3458000,
+      "timestamp": "2026-11-01T10:54:34+00:00"
+    },
+    {
+      "id": "TXN-VIC-6-TO-2847",
+      "sender": "ACC-VIC-6",
+      "receiver": "ACC-2847",
+      "amount_paise": 2000000,
+      "timestamp": "2026-11-01T11:05:00+00:00"
+    },
+    {
+      "id": "TXN-2847-TO-7721-HOP1-6",
+      "sender": "ACC-2847",
+      "receiver": "ACC-7721",
+      "amount_paise": 1900000,
+      "timestamp": "2026-11-01T11:09:16+00:00"
+    },
+    {
+      "id": "TXN-1029-TO-9904-HOP3-5",
+      "sender": "ACC-1029",
+      "receiver": "ACC-9904",
+      "amount_paise": 3344000,
+      "timestamp": "2026-11-01T11:10:34+00:00"
+    },
+    {
+      "id": "TXN-7721-TO-1029-HOP2-6",
+      "sender": "ACC-7721",
+      "receiver": "ACC-1029",
+      "amount_paise": 1820000,
+      "timestamp": "2026-11-01T11:19:16+00:00"
+    },
+    {
+      "id": "TXN-1029-TO-9904-HOP3-6",
+      "sender": "ACC-1029",
+      "receiver": "ACC-9904",
+      "amount_paise": 1760000,
+      "timestamp": "2026-11-01T11:36:16+00:00"
+    },
+    {
+      "id": "PAY-001",
+      "sender": "RET-00",
+      "receiver": "RET-01",
+      "amount_paise": 37000,
+      "timestamp": "2026-11-01T09:00:00+00:00"
+    },
+    {
+      "id": "PAY-002",
+      "sender": "RET-01",
+      "receiver": "RET-02",
+      "amount_paise": 80100,
+      "timestamp": "2026-11-01T11:00:00+00:00"
+    },
+    {
+      "id": "PAY-003",
+      "sender": "RET-02",
+      "receiver": "RET-03",
+      "amount_paise": 123200,
+      "timestamp": "2026-11-01T13:00:00+00:00"
+    },
+    {
+      "id": "PAY-004",
+      "sender": "RET-03",
+      "receiver": "RET-04",
+      "amount_paise": 166300,
+      "timestamp": "2026-11-01T15:00:00+00:00"
+    },
+    {
+      "id": "PAY-005",
+      "sender": "RET-04",
+      "receiver": "RET-05",
+      "amount_paise": 209400,
+      "timestamp": "2026-11-02T09:00:00+00:00"
+    },
+    {
+      "id": "PAY-006",
+      "sender": "RET-05",
+      "receiver": "RET-06",
+      "amount_paise": 252500,
+      "timestamp": "2026-11-02T11:00:00+00:00"
+    },
+    {
+      "id": "PAY-007",
+      "sender": "RET-06",
+      "receiver": "RET-07",
+      "amount_paise": 295600,
+      "timestamp": "2026-11-02T13:00:00+00:00"
+    },
+    {
+      "id": "PAY-008",
+      "sender": "RET-07",
+      "receiver": "RET-08",
+      "amount_paise": 338700,
+      "timestamp": "2026-11-02T15:00:00+00:00"
+    },
+    {
+      "id": "PAY-009",
+      "sender": "RET-08",
+      "receiver": "RET-09",
+      "amount_paise": 71800,
+      "timestamp": "2026-11-03T09:00:00+00:00"
+    },
+    {
+      "id": "PAY-010",
+      "sender": "RET-09",
+      "receiver": "RET-10",
+      "amount_paise": 114900,
+      "timestamp": "2026-11-03T11:00:00+00:00"
+    },
+    {
+      "id": "PAY-011",
+      "sender": "RET-10",
+      "receiver": "RET-11",
+      "amount_paise": 158000,
+      "timestamp": "2026-11-03T13:00:00+00:00"
+    },
+    {
+      "id": "PAY-012",
+      "sender": "RET-11",
+      "receiver": "RET-12",
+      "amount_paise": 201100,
+      "timestamp": "2026-11-03T15:00:00+00:00"
+    },
+    {
+      "id": "PAY-013",
+      "sender": "RET-12",
+      "receiver": "RET-13",
+      "amount_paise": 244200,
+      "timestamp": "2026-11-04T09:00:00+00:00"
+    },
+    {
+      "id": "PAY-014",
+      "sender": "RET-13",
+      "receiver": "RET-14",
+      "amount_paise": 287300,
+      "timestamp": "2026-11-04T11:00:00+00:00"
+    },
+    {
+      "id": "PAY-015",
+      "sender": "RET-14",
+      "receiver": "RET-15",
+      "amount_paise": 330400,
+      "timestamp": "2026-11-04T13:00:00+00:00"
+    },
+    {
+      "id": "PAY-016",
+      "sender": "RET-15",
+      "receiver": "RET-16",
+      "amount_paise": 63500,
+      "timestamp": "2026-11-04T15:00:00+00:00"
+    },
+    {
+      "id": "PAY-017",
+      "sender": "RET-16",
+      "receiver": "RET-17",
+      "amount_paise": 106600,
+      "timestamp": "2026-11-05T09:00:00+00:00"
+    },
+    {
+      "id": "PAY-018",
+      "sender": "RET-17",
+      "receiver": "RET-18",
+      "amount_paise": 149700,
+      "timestamp": "2026-11-05T11:00:00+00:00"
+    },
+    {
+      "id": "PAY-019",
+      "sender": "RET-18",
+      "receiver": "RET-19",
+      "amount_paise": 192800,
+      "timestamp": "2026-11-05T13:00:00+00:00"
+    },
+    {
+      "id": "PAY-020",
+      "sender": "RET-19",
+      "receiver": "RET-00",
+      "amount_paise": 235900,
+      "timestamp": "2026-11-05T15:00:00+00:00"
+    },
+    {
+      "id": "PAY-021",
+      "sender": "RET-00",
+      "receiver": "RET-02",
+      "amount_paise": 279000,
+      "timestamp": "2026-11-06T09:00:00+00:00"
+    },
+    {
+      "id": "PAY-022",
+      "sender": "RET-01",
+      "receiver": "RET-03",
+      "amount_paise": 322100,
+      "timestamp": "2026-11-06T11:00:00+00:00"
+    },
+    {
+      "id": "PAY-023",
+      "sender": "RET-02",
+      "receiver": "RET-04",
+      "amount_paise": 55200,
+      "timestamp": "2026-11-06T13:00:00+00:00"
+    },
+    {
+      "id": "PAY-024",
+      "sender": "RET-03",
+      "receiver": "RET-05",
+      "amount_paise": 98300,
+      "timestamp": "2026-11-06T15:00:00+00:00"
+    },
+    {
+      "id": "PAY-025",
+      "sender": "RET-04",
+      "receiver": "RET-06",
+      "amount_paise": 141400,
+      "timestamp": "2026-11-07T09:00:00+00:00"
+    },
+    {
+      "id": "PAY-026",
+      "sender": "RET-05",
+      "receiver": "RET-07",
+      "amount_paise": 184500,
+      "timestamp": "2026-11-07T11:00:00+00:00"
+    },
+    {
+      "id": "PAY-027",
+      "sender": "RET-06",
+      "receiver": "RET-08",
+      "amount_paise": 227600,
+      "timestamp": "2026-11-07T13:00:00+00:00"
+    },
+    {
+      "id": "PAY-028",
+      "sender": "RET-07",
+      "receiver": "RET-09",
+      "amount_paise": 270700,
+      "timestamp": "2026-11-07T15:00:00+00:00"
+    },
+    {
+      "id": "PAY-029",
+      "sender": "RET-08",
+      "receiver": "RET-10",
+      "amount_paise": 313800,
+      "timestamp": "2026-11-08T09:00:00+00:00"
+    },
+    {
+      "id": "PAY-030",
+      "sender": "RET-09",
+      "receiver": "RET-11",
+      "amount_paise": 46900,
+      "timestamp": "2026-11-08T11:00:00+00:00"
+    },
+    {
+      "id": "PAY-031",
+      "sender": "RET-10",
+      "receiver": "RET-12",
+      "amount_paise": 90000,
+      "timestamp": "2026-11-08T13:00:00+00:00"
+    },
+    {
+      "id": "PAY-032",
+      "sender": "RET-11",
+      "receiver": "RET-13",
+      "amount_paise": 133100,
+      "timestamp": "2026-11-08T15:00:00+00:00"
+    },
+    {
+      "id": "PAY-033",
+      "sender": "RET-12",
+      "receiver": "RET-14",
+      "amount_paise": 176200,
+      "timestamp": "2026-11-09T09:00:00+00:00"
+    },
+    {
+      "id": "PAY-034",
+      "sender": "RET-13",
+      "receiver": "RET-15",
+      "amount_paise": 219300,
+      "timestamp": "2026-11-09T11:00:00+00:00"
+    },
+    {
+      "id": "PAY-035",
+      "sender": "RET-14",
+      "receiver": "RET-16",
+      "amount_paise": 262400,
+      "timestamp": "2026-11-09T13:00:00+00:00"
+    },
+    {
+      "id": "PAY-036",
+      "sender": "RET-15",
+      "receiver": "RET-17",
+      "amount_paise": 305500,
+      "timestamp": "2026-11-09T15:00:00+00:00"
+    },
+    {
+      "id": "PAY-037",
+      "sender": "RET-16",
+      "receiver": "RET-18",
+      "amount_paise": 38600,
+      "timestamp": "2026-11-10T09:00:00+00:00"
+    },
+    {
+      "id": "PAY-038",
+      "sender": "RET-17",
+      "receiver": "RET-19",
+      "amount_paise": 81700,
+      "timestamp": "2026-11-10T11:00:00+00:00"
+    },
+    {
+      "id": "PAY-039",
+      "sender": "RET-18",
+      "receiver": "RET-00",
+      "amount_paise": 124800,
+      "timestamp": "2026-11-10T13:00:00+00:00"
+    },
+    {
+      "id": "PAY-040",
+      "sender": "RET-19",
+      "receiver": "RET-01",
+      "amount_paise": 167900,
+      "timestamp": "2026-11-10T15:00:00+00:00"
+    },
+    {
+      "id": "PAY-041",
+      "sender": "RET-00",
+      "receiver": "RET-03",
+      "amount_paise": 211000,
+      "timestamp": "2026-11-11T09:00:00+00:00"
+    },
+    {
+      "id": "PAY-042",
+      "sender": "RET-01",
+      "receiver": "RET-04",
+      "amount_paise": 254100,
+      "timestamp": "2026-11-11T11:00:00+00:00"
+    },
+    {
+      "id": "PAY-043",
+      "sender": "RET-02",
+      "receiver": "RET-05",
+      "amount_paise": 297200,
+      "timestamp": "2026-11-11T13:00:00+00:00"
+    },
+    {
+      "id": "PAY-044",
+      "sender": "RET-03",
+      "receiver": "RET-06",
+      "amount_paise": 340300,
+      "timestamp": "2026-11-11T15:00:00+00:00"
+    },
+    {
+      "id": "PAY-045",
+      "sender": "RET-04",
+      "receiver": "RET-07",
+      "amount_paise": 73400,
+      "timestamp": "2026-11-12T09:00:00+00:00"
+    },
+    {
+      "id": "TXN-9904-TO-4410-RING-1",
+      "sender": "ACC-9904",
+      "receiver": "ACC-4410",
+      "amount_paise": 1500000,
+      "timestamp": "2026-11-01T12:10:00+00:00"
+    },
+    {
+      "id": "TXN-4410-TO-5530-RING-2",
+      "sender": "ACC-4410",
+      "receiver": "ACC-5530",
+      "amount_paise": 1450000,
+      "timestamp": "2026-11-01T12:19:00+00:00"
+    },
+    {
+      "id": "TXN-5530-TO-1029-RING-3",
+      "sender": "ACC-5530",
+      "receiver": "ACC-1029",
+      "amount_paise": 1400000,
+      "timestamp": "2026-11-01T12:27:00+00:00"
+    },
+    {
+      "id": "TXN-VIC-7-TO-5530",
+      "sender": "ACC-VIC-7",
+      "receiver": "ACC-5530",
+      "amount_paise": 4500000,
+      "timestamp": "2026-11-01T13:00:00+00:00"
+    },
+    {
+      "id": "TXN-5530-TO-1029-HOP1-7",
+      "sender": "ACC-5530",
+      "receiver": "ACC-1029",
+      "amount_paise": 4300000,
+      "timestamp": "2026-11-01T13:08:00+00:00"
+    },
+    {
+      "id": "TXN-VIC-8-TO-5530",
+      "sender": "ACC-VIC-8",
+      "receiver": "ACC-5530",
+      "amount_paise": 3000000,
+      "timestamp": "2026-11-01T13:30:00+00:00"
+    },
+    {
+      "id": "TXN-5530-TO-1029-HOP1-8",
+      "sender": "ACC-5530",
+      "receiver": "ACC-1029",
+      "amount_paise": 2850000,
+      "timestamp": "2026-11-01T13:36:00+00:00"
+    },
+    {
+      "id": "TXN-1029-TO-9904-RING-4",
+      "sender": "ACC-1029",
+      "receiver": "ACC-9904",
+      "amount_paise": 8200000,
+      "timestamp": "2026-11-01T13:44:00+00:00"
+    }
+  ],
+  "complaints": [
+    {
+      "id": "CMP-001",
+      "account": "ACC-2847",
+      "transfer": "TXN-VIC-1-TO-2847",
+      "category": "Reported online payment fraud",
+      "timestamp": "2026-11-02T09:00:00+00:00"
+    },
+    {
+      "id": "CMP-002",
+      "account": "ACC-2847",
+      "transfer": "TXN-VIC-2-TO-2847",
+      "category": "Reported online payment fraud",
+      "timestamp": "2026-11-02T09:01:00+00:00"
+    },
+    {
+      "id": "CMP-003",
+      "account": "ACC-2847",
+      "transfer": "TXN-VIC-3-TO-2847",
+      "category": "Reported online payment fraud",
+      "timestamp": "2026-11-02T09:02:00+00:00"
+    },
+    {
+      "id": "CMP-004",
+      "account": "ACC-2847",
+      "transfer": "TXN-VIC-4-TO-2847",
+      "category": "Reported online payment fraud",
+      "timestamp": "2026-11-02T09:03:00+00:00"
+    },
+    {
+      "id": "CMP-005",
+      "account": "ACC-2847",
+      "transfer": "TXN-VIC-5-TO-2847",
+      "category": "Reported online payment fraud",
+      "timestamp": "2026-11-02T09:04:00+00:00"
+    },
+    {
+      "id": "CMP-006",
+      "account": "ACC-2847",
+      "transfer": "TXN-VIC-6-TO-2847",
+      "category": "Reported online payment fraud",
+      "timestamp": "2026-11-02T09:05:00+00:00"
+    },
+    {
+      "id": "CMP-007",
+      "account": "ACC-5530",
+      "transfer": "TXN-VIC-7-TO-5530",
+      "category": "Investment scam",
+      "timestamp": "2026-11-02T10:00:00+00:00"
+    },
+    {
+      "id": "CMP-008",
+      "account": "ACC-5530",
+      "transfer": "TXN-VIC-8-TO-5530",
+      "category": "Investment scam",
+      "timestamp": "2026-11-02T11:30:00+00:00"
+    }
+  ]
+}

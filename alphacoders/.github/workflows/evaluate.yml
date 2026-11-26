@@ -1,0 +1,26 @@
+name: Evaluator checks
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  workbench:
+    name: Python 3.13 on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install uv
+        run: python -m pip install uv==0.12.5
+      - name: Reproduce the evaluator environment
+        run: uv sync --locked --no-build --python 3.13
+      - name: Test the workbench and local launcher
+        run: uv run --locked python -m pytest -q

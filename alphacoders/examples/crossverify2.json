@@ -1,0 +1,25 @@
+{
+  "name": "CrossVerify II · dual-ring synthetic ledger",
+  "accounts": [
+    { "id": "CV2-A", "name": "Ring 1 collector", "device": "DEV-CV2-1" },
+    { "id": "CV2-B", "name": "Ring 1 intermediary" },
+    { "id": "CV2-C", "name": "Ring 1 cash-out" },
+    { "id": "CV2-V1", "name": "Ring 1 victim" },
+    { "id": "CV2-D", "name": "Ring 2 collector", "device": "DEV-CV2-2" },
+    { "id": "CV2-E", "name": "Ring 2 intermediary" },
+    { "id": "CV2-F", "name": "Ring 2 cash-out" },
+    { "id": "CV2-V2", "name": "Ring 2 victim" }
+  ],
+  "transactions": [
+    { "id": "CV2-T1", "sender": "CV2-V1", "receiver": "CV2-A", "amount_paise": 210000, "timestamp": "2026-11-03T08:00:00+05:30" },
+    { "id": "CV2-T2", "sender": "CV2-A", "receiver": "CV2-B", "amount_paise": 200000, "timestamp": "2026-11-03T08:05:00+05:30" },
+    { "id": "CV2-T3", "sender": "CV2-B", "receiver": "CV2-C", "amount_paise": 190000, "timestamp": "2026-11-03T08:18:00+05:30" },
+    { "id": "CV2-T4", "sender": "CV2-V2", "receiver": "CV2-D", "amount_paise": 180000, "timestamp": "2026-11-04T10:00:00+05:30" },
+    { "id": "CV2-T5", "sender": "CV2-D", "receiver": "CV2-E", "amount_paise": 170000, "timestamp": "2026-11-04T10:06:00+05:30" },
+    { "id": "CV2-T6", "sender": "CV2-E", "receiver": "CV2-F", "amount_paise": 160000, "timestamp": "2026-11-04T10:15:00+05:30" }
+  ],
+  "complaints": [
+    { "id": "CV2-CMP-1", "account": "CV2-A", "transfer": "CV2-T1", "category": "Reported online payment fraud", "timestamp": "2026-11-05T09:00:00+00:00" },
+    { "id": "CV2-CMP-2", "account": "CV2-D", "transfer": "CV2-T4", "category": "Investment scam", "timestamp": "2026-11-06T09:00:00+00:00" }
+  ]
+}

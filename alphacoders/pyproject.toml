@@ -1,0 +1,32 @@
+[project]
+name = "mulex"
+version = "1.0.0"
+description = "Local mule-account investigations and simulated payment prevention"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "fastapi==0.162.0",
+    "networkx==3.7",
+    "numpy==2.5.4",
+    "onnxruntime==1.27.0",
+    "opencv-python-headless==4.13.0.92",
+    "pillow==13.0.0",
+    "pydantic==2.14.1",
+    "python-multipart==0.0.32",
+    "rapidocr==3.10.0",
+    "reportlab==5.1.0",
+    "scikit-learn==1.9.1",
+    "uvicorn==0.54.0",
+]
+
+[dependency-groups]
+dev = ["httpx==0.28.1", "pytest==9.1.1"]
+
+[tool.uv]
+package = false
+required-environments = [
+    "sys_platform == 'win32' and platform_machine == 'AMD64'",
+    "sys_platform == 'linux' and platform_machine == 'x86_64'",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#10243A" />
+    <title>MULEX · Mule Account Investigation &amp; Prevention Workbench</title>
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="/assets/styles.css" />
+    <script type="module" src="/assets/desk.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <div class="app">
+      <aside class="sidebar" id="sidebar" aria-label="Primary">
+        <div class="brand">
+          <span class="logo-mark"
+            ><img src="/assets/logo.png" alt="MULEX"
+          /></span>
+          <span class="brand-text"
+            ><b>MULEX</b><small>Forensic Workbench</small></span
+          >
+          <button
+            type="button"
+            id="collapse-toggle"
+            class="icon-btn collapse"
+            aria-label="Collapse navigation"
+            aria-controls="sidebar"
+            aria-expanded="true"
+          ></button>
+        </div>
+        <div class="nav-section-head">
+          <span class="label">Workbench Modules</span>
+        </div>
+        <nav aria-label="Modules"><ul id="nav"></ul></nav>
+        <div class="side-foot">
+          <div class="workstation-meta">
+            <span class="meta-dot" aria-hidden="true"></span>
+            <span class="label">Local ONNX · CPU Inference</span>
+          </div>
+          <p class="operator">Team Alpha Coders · Single-Analyst Desk</p>
+        </div>
+      </aside>
+      <div class="scrim" id="scrim" hidden></div>
+      <div class="workspace">
+        <header class="topbar">
+          <div class="utility">
+            <button
+              type="button"
+              id="menu-toggle"
+              class="icon-btn menu-toggle"
+              aria-controls="sidebar"
+              aria-expanded="false"
+              aria-label="Open navigation"
+            ></button>
+            <div class="search">
+              <label for="global-search" class="sr-only"
+                >Search accounts, incidents and networks</label
+              >
+              <span class="search-icon" id="search-icon"></span>
+              <input
+                id="global-search"
+                type="search"
+                role="combobox"
+                autocomplete="off"
+                aria-autocomplete="list"
+                aria-expanded="false"
+                aria-controls="search-results"
+                placeholder="Search accounts, incidents, networks…"
+              />
+              <kbd aria-hidden="true">/</kbd>
+              <ul
+                id="search-results"
+                class="search-results"
+                role="listbox"
+                aria-label="Search results"
+                hidden
+              ></ul>
+            </div>
+            <span
+              class="badge sim"
+              title="Runs entirely on this workstation with local models and synthetic or imported data. No bank connectivity."
+              >Local simulation</span
+            >
+            <button
+              type="button"
+              id="bell"
+              class="icon-btn bell"
+              aria-label="Priority alerts"
+            ></button>
+            <button
+              type="button"
+              id="theme-toggle"
+              class="icon-btn"
+              aria-label="Toggle color theme"
+              title="Toggle color theme"
+            ></button>
+          </div>
+          <div class="title-row">
+            <div class="titles">
+              <nav aria-label="Breadcrumb" class="crumbs">
+                <ol>
+                  <li>Financial Crime &amp; V-CIP Forensics</li>
+                  <li id="crumb-view">Overview</li>
+                  <li id="crumb-entity" hidden></li>
+                </ol>
+              </nav>
+              <h1 id="title">Overview</h1>
+            </div>
+            <label class="field dataset-select"
+              ><span>Active ledger workspace</span
+              ><select id="dataset"></select
+            ></label>
+          </div>
+        </header>
+        <div id="notice" class="notice" role="status" hidden>
+          <span id="notice-text"></span>
+          <button
+            type="button"
+            class="icon-btn"
+            id="notice-close"
+            aria-label="Dismiss message"
+          ></button>
+        </div>
+        <main id="content" tabindex="-1">
+          <section id="overview" aria-label="Overview">
+            <div class="kpis" id="kpis" aria-label="Dataset summary"></div>
+            <div class="grid">
+              <section class="card span-6" aria-labelledby="ov-alerts-h">
+                <div class="card-head">
+                  <div>
+                    <p class="kicker">Detection &amp; prevention triage</p>
+                    <h2 id="ov-alerts-h" class="card-title">
+                      <span id="alerts-icon"></span>Priority alerts
+                    </h2>
+                  </div>
+                  <button type="button" class="btn ghost small" id="alerts-all">
+                    View all alerts
+                  </button>
+                </div>
+                <div id="alerts" class="alert-list"></div>
+              </section>
+              <section class="card span-6" aria-labelledby="ov-flow-h">
+                <div class="card-head">
+                  <div>
+                    <p class="kicker">Graph intelligence</p>
+                    <h2 id="ov-flow-h" class="card-title">
+                      <span id="network-icon"></span>Transaction network
+                    </h2>
+                  </div>
+                  <div class="card-tools">
+                    <div
+                      class="segmented"
+                      id="ov-net-select"
+                      role="group"
+                      aria-label="Choose network"
+                    ></div>
+                    <div class="segmented" role="group" aria-label="View as">
+                      <button
+                        type="button"
+                        data-ov-mode="graph"
+                        aria-pressed="true"
+                      >
+                        Graph</button
+                      ><button
+                        type="button"
+                        data-ov-mode="table"
+                        aria-pressed="false"
+                      >
+                        Table
+                      </button>
+                    </div>
+                    <button
+                      type="button"
+                      class="btn ghost small"
+                      id="ov-view-network"
+                    >
+                      View network
+                    </button>
+                  </div>
+                </div>
+                <div id="ov-graph" class="graph-host"></div>
+                <div id="ov-table" hidden></div>
+                <div class="legend" id="ov-legend"></div>
+                <dl class="stats" id="ov-stats"></dl>
+              </section>
+              <section class="card span-5" aria-labelledby="ov-signals-h">
+                <div class="card-head">
+                  <div>
+                    <p class="kicker">Explainable scoring</p>
+                    <h2 id="ov-signals-h">Risk signals</h2>
+                    <p class="card-sub" id="ov-signals-sub"></p>
+                  </div>
+                </div>
+                <div id="ov-signals"></div>
+              </section>
+              <section class="card span-7" aria-labelledby="ov-leads-h">
+                <div class="card-head">
+                  <div>
+                    <p class="kicker">Account risk ranking</p>
+                    <h2 id="ov-leads-h">Priority leads</h2>
+                    <p class="card-sub">
+                      Highest-risk accounts and their case status
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn ghost small"
+                    data-view="investigate"
+                  >
+                    Open queue
+                  </button>
+                </div>
+                <div id="ov-leads"></div>
+              </section>
+              <section class="card span-7" aria-labelledby="ov-inc-h">
+                <div class="card-head">
+                  <div>
+                    <p class="kicker">Law-enforcement referral</p>
+                    <h2 id="ov-inc-h">Correlated complaint incidents</h2>
+                    <p class="card-sub">
+                      Complaints whose accounts connect through transfers,
+                      devices or a common beneficiary
+                    </p>
+                  </div>
+                </div>
+                <div id="incidents"></div>
+              </section>
+              <section class="card span-5" aria-labelledby="ov-prev-h">
+                <div class="card-head">
+                  <div>
+                    <p class="kicker">Prevention engine</p>
+                    <h2 id="ov-prev-h">Onboarding prevention</h2>
+                    <p class="card-sub">Mule accounts stopped at Video KYC</p>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn ghost small"
+                    data-view="onboarding"
+                  >
+                    Open onboarding
+                  </button>
+                </div>
+                <div id="ov-prevention"></div>
+              </section>
+            </div>
+          </section>
+
+          <section
+            id="investigate"
+            class="split"
+            hidden
+            aria-label="Investigation desk"
+          >
+            <aside class="card queue" aria-labelledby="queue-h">
+              <div class="card-head">
+                <div>
+                  <p class="kicker">Triage queue</p>
+                  <h2 id="queue-h">Priority queue</h2>
+                </div>
+                <span class="muted small mono" id="queue-count"></span>
+              </div>
+              <label class="sr-only" for="search">Filter accounts</label>
+              <input
+                id="search"
+                type="search"
+                placeholder="Filter by account ID or name"
+              />
+              <div class="filters">
+                <label class="field"
+                  ><span>Severity</span
+                  ><select id="level-filter">
+                    <option value="">All</option>
+                    <option>Critical</option>
+                    <option>High</option>
+                    <option>Review</option>
+                    <option>Low</option>
+                  </select></label
+                >
+                <label class="field"
+                  ><span>Case status</span
+                  ><select id="case-filter">
+                    <option value="">All</option>
+                    <option>New</option>
+                    <option>Investigating</option>
+                    <option>Escalated</option>
+                    <option>Closed</option>
+                  </select></label
+                >
+              </div>
+              <div id="queue" class="queue-list"></div>
+              <button type="button" class="btn ghost full" id="more" hidden>
+                Show more accounts
+              </button>
+            </aside>
+            <article class="dossier" id="detail" aria-live="polite"></article>
+          </section>
+
+          <section
+            id="networks"
+            class="split"
+            hidden
+            aria-label="Network analysis"
+          >
+            <aside class="card" aria-labelledby="net-list-h">
+              <div class="card-head">
+                <div>
+                  <p class="kicker">Cluster topology</p>
+                  <h2 id="net-list-h">Suspicious networks</h2>
+                  <p class="card-sub">
+                    Accounts scoring 40+ linked by transfers or devices
+                  </p>
+                </div>
+              </div>
+              <div id="network-list" class="queue-list"></div>
+            </aside>
+            <article
+              class="card"
+              id="network-detail"
+              aria-live="polite"
+            ></article>
+          </section>
+
+          <section id="onboarding" hidden aria-label="Onboarding">
+            <div class="grid">
+              <section class="card span-7" aria-labelledby="vcip-h">
+                <div class="card-head">
+                  <div>
+                    <p class="kicker">Prevention · Video KYC (V-CIP)</p>
+                    <h2 id="vcip-h">V-CIP session</h2>
+                    <p class="card-sub">
+                      Camera-integrity gate, document OCR, biometric match,
+                      liveness and deepfake screening
+                    </p>
+                  </div>
+                  <span id="vcip-session-id" class="badge plain mono" hidden></span>
+                </div>
+                <ol
+                  class="stepper"
+                  id="vcip-steps"
+                  aria-label="Session progress"
+                ></ol>
+                <div id="vcip-body" aria-live="polite"></div>
+              </section>
+              <section class="card span-5" aria-labelledby="officer-h">
+                <div class="card-head">
+                  <div>
+                    <p class="kicker">Governance &amp; audit trail</p>
+                    <h2 id="officer-h">Officer queue</h2>
+                    <p class="card-sub">
+                      Engine decisions await an accountable human decision
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn ghost small"
+                    id="audit-verify"
+                  >
+                    Verify audit chain
+                  </button>
+                </div>
+                <div
+                  class="segmented"
+                  id="officer-filter"
+                  role="group"
+                  aria-label="Filter sessions"
+                ></div>
+                <div id="officer-list" class="queue-list officer-list"></div>
+                <div id="officer-detail" aria-live="polite"></div>
+              </section>
+            </div>
+          </section>
+
+          <section id="datasets" hidden aria-label="Dataset intake">
+            <div class="grid">
+              <section class="card span-7" aria-labelledby="import-h">
+                <div class="card-head">
+                  <div>
+                    <p class="kicker">Data intake</p>
+                    <h2 id="import-h">Import a ledger</h2>
+                    <p class="card-sub">
+                      Deterministic schema and timezone validation prior to
+                      ingestion
+                    </p>
+                  </div>
+                </div>
+                <form id="import-form" class="form">
+                  <label class="dropzone" id="dropzone">
+                    <span class="dz-icon" id="dz-icon"></span>
+                    <strong>Drop a JSON or CSV file here</strong>
+                    <span class="muted"
+                      >or press to choose a file · up to 4 MB</span
+                    >
+                    <input
+                      id="source-file"
+                      class="sr-only"
+                      type="file"
+                      accept=".json,.csv,application/json,text/csv"
+                      required
+                    />
+                  </label>
+                  <div id="file-check" aria-live="polite"></div>
+                  <button class="btn primary" id="import-btn" disabled>
+                    Import dataset
+                  </button>
+                  <div id="import-status" aria-live="polite"></div>
+                </form>
+              </section>
+              <section class="card span-5" aria-labelledby="ws-h">
+                <div class="card-head">
+                  <div>
+                    <p class="kicker">Investigation vaults</p>
+                    <h2 id="ws-h">Workspaces</h2>
+                    <p class="card-sub">
+                      Each import is an isolated workspace. Re-importing
+                      identical data reopens it.
+                    </p>
+                  </div>
+                </div>
+                <div id="workspaces"></div>
+              </section>
+              <section class="card span-12" aria-labelledby="schema-h">
+                <div class="card-head">
+                  <div>
+                    <p class="kicker">Ingestion contract</p>
+                    <h2 id="schema-h">Accepted formats</h2>
+                    <p class="card-sub">
+                      Validated in the browser, then again on the server before
+                      anything is written.
+                    </p>
+                  </div>
+                  <div class="card-tools">
+                    <a class="btn ghost small" href="/api/example" download
+                      >Example JSON</a
+                    ><a
+                      class="btn ghost small"
+                      href="/assets/transfers.csv"
+                      download
+                      >Example CSV</a
+                    >
+                  </div>
+                </div>
+                <div class="schema">
+                  <div>
+                    <h3>Transaction CSV</h3>
+                    <p class="muted">
+                      Required columns
+                      <code>id,sender,receiver,amount_paise,timestamp</code>.
+                      Extra columns are dropped automatically and each distinct
+                      endpoint becomes an account.
+                    </p>
+                    <div class="table-wrap">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th scope="col">Column</th>
+                            <th scope="col">Rule</th>
+                            <th scope="col">Example</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><code>id</code></td>
+                            <td>Unique transfer ID</td>
+                            <td><code>T1</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>sender</code>, <code>receiver</code></td>
+                            <td>Account IDs, case-sensitive, distinct</td>
+                            <td><code>A, B</code></td>
+                          </tr>
+                          <tr>
+                            <td><code>amount_paise</code></td>
+                            <td>Positive integer INR paise</td>
+                            <td><code>125050</code> (= ₹1,250.50)</td>
+                          </tr>
+                          <tr>
+                            <td><code>timestamp</code></td>
+                            <td>ISO 8601 with timezone offset</td>
+                            <td><code>2026-11-01T09:00:00+05:30</code></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div>
+                    <h3>Full JSON dataset</h3>
+                    <p class="muted">
+                      <code>name</code>, <code>accounts</code> (id, name,
+                      optional device), <code>transactions</code> and optional
+                      <code>complaints</code> (id, account, category, timestamp,
+                      optional transfer involving that account). Extra fields are
+                      dropped during schema validation.
+                    </p>
+                    <ul class="limits">
+                      <li>Up to 3,000 accounts</li>
+                      <li>Up to 20,000 transfers</li>
+                      <li>Up to 5,000 complaints</li>
+                      <li>UTF-8, 4 MB per file</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+    <dialog id="confirm" aria-labelledby="confirm-title">
+      <form method="dialog">
+        <p class="kicker">Confirmation required</p>
+        <h2 id="confirm-title"></h2>
+        <div id="confirm-body"></div>
+        <div class="dialog-actions">
+          <button class="btn ghost" value="cancel">Cancel</button>
+          <button class="btn primary" value="ok" id="confirm-ok">
+            Confirm
+          </button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>
