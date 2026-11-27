@@ -457,29 +457,27 @@ function setCollapsed(collapsed) {
 const THEME_KEY = "mulex.theme";
 function initialTheme() {
   const saved = localStorage.getItem(THEME_KEY);
-  return saved === "light" ? "light" : "dark";
+  if (saved === "light" || saved === "dark") return saved;
+  return window.matchMedia?.("(prefers-color-scheme: light)").matches
+    ? "light"
+    : "dark";
 }
 function applyTheme(theme) {
   const mode = theme === "light" ? "light" : "dark";
   document.documentElement.dataset.theme = mode;
   const t = $("theme-toggle");
   if (t) {
-    t.innerHTML = icon(mode === "dark" ? "sun" : "moon");
-    const label =
-      mode === "dark"
-        ? "Switch to light brief theme"
-        : "Switch to dark forensics theme";
+    t.innerHTML = icon(mode === "dark" ? "moon" : "sun");
+    const label = mode === "dark" ? "Switch to light theme" : "Switch to dark theme";
     t.setAttribute("aria-label", label);
-    t.setAttribute("aria-pressed", String(mode === "light"));
     t.title = label;
   }
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.content = mode === "light" ? "#EEF2F6" : "#10243A";
+  if (meta) meta.content = mode === "light" ? "#f6f8f8" : "#0b1220";
 }
 function setTheme(theme) {
-  const mode = theme === "light" ? "light" : "dark";
-  localStorage.setItem(THEME_KEY, mode);
-  applyTheme(mode);
+  localStorage.setItem(THEME_KEY, theme);
+  applyTheme(theme);
 }
 function navCount(view, n, label) {
   const el = $("nav-count-" + view);
@@ -1887,7 +1885,7 @@ document.addEventListener("click", async (e) => {
     }
     if (btn.id === "theme-toggle") {
       return setTheme(
-        document.documentElement.dataset.theme === "light" ? "dark" : "light",
+        document.documentElement.dataset.theme === "dark" ? "light" : "dark",
       );
     }
     if (btn.id === "notice-close") return notice("");
